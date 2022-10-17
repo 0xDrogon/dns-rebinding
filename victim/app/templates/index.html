@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Smart House</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <script src="{{ url_for('static', filename='js/jquery-2.2.4.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>Turn on/off your lights</h1>
+        <div class="box" style="text-align: center">
+            <h2>Hallway</h2>
+            <label class="switch">
+                <input type="checkbox" id="hallway" onchange="hallwayToggle()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <br>
+        <div class="box" style="text-align: center">
+            <h2>Kitchen</h2>
+            <label class="switch">
+                <input type="checkbox" id="kitchen" onchange="kitchenToggle()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <br>
+        <div class="box" style="text-align: center">
+            <h2>Bedroom</h2>
+            <label class="switch">
+                <input type="checkbox" id="bedroom" onchange="bedroomToggle()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <br>
+        <div class="box" style="text-align: center">
+            <h2>Bathroom</h2>
+            <label class="switch">
+                <input type="checkbox" id="bathroom" onchange="bathroomToggle()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <br>
+        <div class="box" style="text-align: center">
+            <h2>Living room</h2>
+            <label class="switch">
+                <input type="checkbox" id="livingroom" onchange="livingroomToggle()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </body>
+    <script>
+        window.onload = function(){
+            $.get('/lights', function(data) {
+                if (data.bedroom) document.getElementById("bedroom").checked = true
+                if (data.kitchen) document.getElementById("kitchen").checked = true
+                if (data.livingroom) document.getElementById("livingroom").checked = true
+                if (data.bathroom) document.getElementById("bathroom").checked = true
+                if (data.hallway) document.getElementById("hallway").checked = true
+            })
+        }
+    </script>
+</html>
