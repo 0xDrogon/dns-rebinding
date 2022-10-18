@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, json
-import string, random
-import logging
+import string, random, sys, logging
 logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
@@ -65,4 +64,5 @@ def setLights():
     )
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    port = 80 if len(sys.argv) < 2 else sys.argv[1]
+    app.run(host='0.0.0.0', port=port)

@@ -4,10 +4,10 @@ ENV PROJECT_DIR /var/dns_rebind_malware
 RUN mkdir -p $PROJECT_DIR
 
 COPY requirements.txt $PROJECT_DIR
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r $PROJECT_DIR/requirements.txt
 
 COPY ./app/ $PROJECT_DIR
 
-EXPOSE 8000
+EXPOSE 80
 
-CMD python3 malware.py
+CMD python3 $PROJECT_DIR/malware.py
