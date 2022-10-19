@@ -10,4 +10,4 @@ COPY ./app/ $PROJECT_DIR
 
 EXPOSE 80
 
-CMD python3 $PROJECT_DIR/malware.py
+CMD python3 $PROJECT_DIR/malware.py 192.168.122.220
