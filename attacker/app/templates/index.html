@@ -15,12 +15,11 @@
     <body>
         <div class="container" style="text-align: center">
    	        <h1>DNS Rebinding Attack</h1>
-            <h1 id="hostname" hidden>{{ hostname }}</h1>
             <button type="button" class="btn" onclick="launchAttack()">Try me!</button>
         </div>
         <script>
             function launchAttack() {
-                var hostname = document.getElementById("hostname").innerHTML;
+                var hostname = window.location.hostname;
                 console.log('Launching attack against ' + hostname);
                 attackRoom(hostname, "hallway");
                 attackRoom(hostname, "kitchen");
