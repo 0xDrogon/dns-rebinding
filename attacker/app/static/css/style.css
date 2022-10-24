@@ -1,0 +1,22 @@
+body {
+    background-color: darkgrey
+}
+
+h1 {
+    font-size: 1.5cm;
+    text-align: center;
+    color: black
+}
+
+button {
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    background-color: #C0C0C0;
+    border: 3.5px solid grey;
+    cursor: pointer
+}
+
+button:hover {
+    background-color: grey
+}
