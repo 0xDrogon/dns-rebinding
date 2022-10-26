@@ -1,0 +1,12 @@
+options {
+  directory "/etc/bind/";
+  allow-query-cache { none; };
+  allow-query { any; };
+  recursion yes;
+  allow-recursion { any };
+
+  forwarders {
+    8.8.8.8;  
+    8.8.4.4; 
+  };
+};
