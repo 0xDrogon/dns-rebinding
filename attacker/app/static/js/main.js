@@ -28,10 +28,10 @@ function sleep(ms) {
     return new Promise(r => setTimeout(r, ms));
 }
 
-function launchAttack() {
+async function launchAttack() {
     var hostname = window.location.hostname;
     console.log('Launching attack against ' + hostname);
-    sleep(1000);
+    await sleep(500);
     attackRoom(hostname, "hallway");
     attackRoom(hostname, "kitchen");
     attackRoom(hostname, "bedroom");
