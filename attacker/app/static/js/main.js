@@ -8,7 +8,10 @@ function attackRoom(hostname, room) {
             console.log(otp);
             turnLightsOn(hostname, room, otp); 
         }
-    }
+    };
+    http.onerror = function() {
+        console.log("failed");
+    };
     http.send();
 }
 
@@ -20,9 +23,12 @@ function turnLightsOn(hostname, room, otp) {
         if(http.readyState == 4 && http.status == 200) {
             console.log(this.responseText);
         }
-    }
+    };
+    http.onerror = function() {
+        console.log("failed");
+    };
     http.send();
-}
+} 
 
 function sleep(ms) {
     return new Promise(r => setTimeout(r, ms));
