@@ -2,21 +2,22 @@ FROM ubuntu/bind9
 
 RUN apt update && apt install -y dnsutils net-tools systemctl pip tcpdump
 
-ENV PROJECT_DIR /etc/bind/
+ENV BIND_DIR /etc/bind/
+ENV PROJECT_DIR /var/dns-rebinding/
 
-COPY requirements.txt $PROJECT_DIR
+COPY utils/requirements.txt $PROJECT_DIR
 RUN pip3 install -r $PROJECT_DIR/requirements.txt
 
-COPY utils/db.dnsrebindingmalware.com $PROJECT_DIR
-COPY utils/named.conf.default-zones $PROJECT_DIR
-COPY utils/named.conf.options $PROJECT_DIR
+COPY bind/db.dnsrebindingmalware.com $BIND_DIR
+COPY bind/named.conf.default-zones $BIND_DIR
+COPY bind/named.conf.options $BIND_DIR
 
-COPY utils/attack.sh $PROJECT_DIR
-COPY utils/fix.sh $PROJECT_DIR
+COPY attack/attack.sh $PROJECT_DIR
+COPY attack/fix.sh $PROJECT_DIR
 RUN chmod +x $PROJECT_DIR/attack.sh
 RUN chmod +x $PROJECT_DIR/fix.sh
 
-COPY utils/sniffer.py $PROJECT_DIR
+COPY attack/sniffer.py $PROJECT_DIR
 
 COPY utils/start.sh $PROJECT_DIR
 RUN chmod +x $PROJECT_DIR/start.sh

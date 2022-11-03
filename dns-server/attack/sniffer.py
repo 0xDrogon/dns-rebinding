@@ -7,11 +7,11 @@ def select_dns_from_victim(pkt):
     global victim
     if DNS in pkt and b'www.dnsrebindingmalware.com' in pkt[DNS].qd.qname and pkt[IP].src == victim:
         print('Calling attack script...')
-        subprocess.call("/etc/bind/attack.sh")
+        subprocess.call("./attack.sh")
         print('Done!')
         time.sleep(5)
         print('Calling fix script...')
-        subprocess.call("/etc/bind/fix.sh")
+        subprocess.call("./fix.sh")
         print('Done!')
         exit()
 
