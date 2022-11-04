@@ -9,7 +9,7 @@ def select_dns_from_victim(pkt):
         print('Calling attack script...')
         subprocess.call("./attack.sh")
         print('Done!')
-        time.sleep(5)
+        time.sleep(10)
         print('Calling fix script...')
         subprocess.call("./fix.sh")
         print('Done!')

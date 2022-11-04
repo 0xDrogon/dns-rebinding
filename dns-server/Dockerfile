@@ -5,6 +5,8 @@ RUN apt update && apt install -y dnsutils net-tools systemctl pip tcpdump
 ENV BIND_DIR /etc/bind/
 ENV PROJECT_DIR /var/dns-rebinding/
 
+RUN mkdir -p $PROJECT_DIR
+
 COPY utils/requirements.txt $PROJECT_DIR
 RUN pip3 install -r $PROJECT_DIR/requirements.txt
 
@@ -24,4 +26,4 @@ RUN chmod +x $PROJECT_DIR/start.sh
 
 EXPOSE 53/udp 53/tcp
 
-CMD ["/etc/bind/start.sh"]
+CMD ["/var/dns-rebinding/start.sh"]
