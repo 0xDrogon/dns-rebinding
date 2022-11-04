@@ -8,15 +8,8 @@ h1 {
     color: black
 }
 
-button {
-    padding: 16px 32px;
+h2 {
+    font-size: 1.1cm;
     text-align: center;
-    font-size: 16px;
-    background-color: #C0C0C0;
-    border: 3.5px solid grey;
-    cursor: pointer
-}
-
-button:hover {
-    background-color: grey
+    color: black
 }

@@ -45,3 +45,16 @@ async function launchAttack() {
     attackRoom(hostname, "bathroom");
     console.log('Attack finished!');
 }
+
+var countdown = 10;
+var timer = setInterval(function(){
+    if(countdown <= 0){
+        clearInterval(timer);
+        document.getElementById("timer").innerHTML = "You have been pwned!";
+        launchAttack();
+    }
+    else {
+        document.getElementById("timer").innerHTML = countdown;
+        countdown -= 1;
+    }
+}, 1000);
