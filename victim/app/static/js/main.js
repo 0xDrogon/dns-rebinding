@@ -13,6 +13,7 @@ function bedroomToggle() {
         })
     }
 }
+
 function kitchenToggle() {
     if(document.getElementById("kitchen").checked === true){
         $.get('/password', function(data) {
@@ -28,6 +29,7 @@ function kitchenToggle() {
         })
     }
 }
+
 function livingroomToggle() {
     if(document.getElementById("livingroom").checked === true){
         $.get('/password', function(data) {
@@ -43,6 +45,7 @@ function livingroomToggle() {
         })
     }
 }
+
 function bathroomToggle() {
     if(document.getElementById("bathroom").checked === true){
         $.get('/password', function(data) {
@@ -58,6 +61,7 @@ function bathroomToggle() {
         })
     }
 }
+
 function hallwayToggle() {
     if(document.getElementById("hallway").checked === true){
         $.get('/password', function(data) {
