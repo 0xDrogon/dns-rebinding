@@ -1,4 +1,4 @@
-# DNS Rebinding Lab
+# Rebind&Conquer Lab
 
 Virtual Lab for demonstrating the DNS Rebinding attack for observing and studying purposes.
 
