@@ -1,4 +1,4 @@
-# DNS Rebinding Lab
+# Rebind&Conquer Lab
 
 
 ## Description
