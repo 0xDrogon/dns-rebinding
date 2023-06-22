@@ -1,0 +1,34 @@
+conf t
+
+
+interface fa1/0
+ip addr 10.0.0.254 255.255.255.0
+no sh
+exit
+
+interface fa2/0
+ip addr 10.0.1.254 255.255.255.0
+no sh
+exit
+
+interface fa3/0
+ip addr 10.0.2.254 255.255.255.0
+no sh
+exit
+
+  
+access-list 101 deny ip 10.0.0.0 0.0.0.255 10.0.2.0 0.0.0.255
+access-list 101 deny ip 10.0.1.0 0.0.0.255 10.0.2.0 0.0.0.255
+access-list 101 permit ip any any
+
+interface FastEthernet1/0
+ip access-group 101 out
+exit
+
+interface FastEthernet2/0
+ip access-group 101 out
+exit
+
+interface FastEthernet3/0
+ip access-group 101 in
+exit
